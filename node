@@ -1,1 +1,108 @@
+class Node:
 
+    def __init__(self, age,highlight, link_node=None):
+        self.age = age
+        self.highlight=highlight
+        self.link_node = link_node
+    #def getn(self):
+    #    a=1
+    #    a= a+1
+    #    return a
+    def get_data(self): # Year: 1, highlight: I was born
+
+        return "node year: "+str(self.age)+ "  highlight: "+self.highlight
+        #a=a+1
+    def get_y(self):
+        return self.age
+
+    def get_next_node(self):
+        return self.link_node
+
+    def set_next_node(self, link_node):
+        self.link_node = link_node
+
+
+
+
+class LinkedList:
+    def __init__(self, data,highlight):
+        self.head_node = Node(data ,highlight)
+
+    def get_head_node(self):
+        return self.head_node
+
+# to insert
+    def insert_beginning(self, new_dataage ,highlight):
+        new_node = Node(new_dataage,highlight )
+        new_node.set_next_node(self.head_node)
+        self.head_node = new_node
+
+#new_dataage ,highlight
+    #to display
+    def get_data(self):
+        string_list = ""
+        current_node = self.get_head_node()
+        while current_node:
+            if current_node.get_data() != None:
+                string_list += str(current_node.get_data()) + "\n"
+            current_node = current_node.get_next_node()
+        return string_list
+
+#add and cheak
+
+#to reorder
+#def reorder(self):
+        #node = self.header.next
+        #while node != self.header and node.next != self.header:
+        #    node.add_before(self.pop(node.next))
+        #    node = node.next
+
+
+
+
+# test
+#Node 1: Year: 1, highlight: I was born
+#Node 2: Year: 3, highlight: I started walking
+#Node 3: Year: 7, highlight: I turned seven
+n1=LinkedList(0 ,"")
+c=7
+n1.insert_beginning(c, " I was born")
+c=3
+n1.insert_beginning(c, " I started walking")
+c=1
+n1.insert_beginning(c, " I turned seven")
+
+
+
+
+ #a=input(" enter year missing :")
+ #b=input ("enter highlight: ")
+ #n1.insert_beginning(int(a),b)
+
+
+#r2d2.remove_node(2)
+#r2d2.remove_node("R")
+
+print(n1.get_data())
+year_list = []
+current_node = n1.get_head_node()
+while current_node:
+    if current_node.get_data() != None:
+        year_list.append(current_node.get_y())
+    current_node = current_node.get_next_node()
+#return year_list
+for i in range(0,len(year_list)):
+    y=int(i)- int(i+1)
+    if y!=0:
+        a=input(" enter year missing :")
+        b=input ("enter highlight: ")
+        n1.insert_beginning(int(a),b)
+#print(n1.get_data())
+
+
+
+#cheak()
+#a=input(" enter year missing :")
+#b=input ("enter highlight: ")
+#n1.insert_beginning(int(a),b)
+#print(n1.get_data())

@@ -48,6 +48,8 @@ class LinkedList:
             current_node = current_node.get_next_node()
         return string_list
 
+
+
 #add and cheak
 
 #to reorder
@@ -64,13 +66,13 @@ class LinkedList:
 #Node 1: Year: 1, highlight: I was born
 #Node 2: Year: 3, highlight: I started walking
 #Node 3: Year: 7, highlight: I turned seven
-n1=LinkedList(0 ,"")
+n1=LinkedList(7 ," I turned seven")
 c=7
-n1.insert_beginning(c, " I was born")
+n1.insert_beginning(2, " I was born")
 d=3
-n1.insert_beginning(d, " I started walking")
+n1.insert_beginning(0, " I started walking")
 f=1
-n1.insert_beginning(f, " I turned seven")
+#n1.insert_beginning(f, " I turned seven")
 
 print(n1.get_data())
 
@@ -81,15 +83,53 @@ print(n1.get_data())
  #n1.insert_beginning(int(a),b)
 # n1=LinkedList(0 ,"")
 
-a=input("enter age")
-for i in range(1,int(a)+1):
-    if(i != c and i != d and i != f ):
-        print ("year:"+str(i))
-        b=input("enter highlight:")
-        n1.insert_beginning(int(i),str(b))
+#a=input("enter age")
+#################################
+current=n1.get_head_node()
+a=int(input("enter age"))
+# solution
+while current.get_y()<int(a):
+    current_age=current.get_y()+1
+    if current.get_next_node()!= None and current.get_next_node().get_y()==current_age:
+        current=current.get_next_node()
+    else:
+            b=input("enter highlight:")
+            new_node= Node(current_age ,b , current.get_next_node())
+            current.set_next_node(new_node)
+            current= new_node
 
-for i in range(1,int(a)+1):
-    
+###################################3
+
+###################################### my solution###############################
+#for i in range(1,int(a)+1):
+#    if(i != c and i != d and i != f ):
+
+    #    print ("year:"+str(i))
+    #    b=input("enter highlight:")
+    #    n1.insert_beginning(int(i),str(b))
+
+
+#########################################solution##########################################33
+#string=[]
+#n=n1.get_data()
+#for a in n:
+#    for j in a:
+#        if str(c) in j:
+#             string.insert(7,a)
+#        elif str(d) in j:
+#            string.insert(3,a)
+
+#        elif str(f) in j:
+#            string.insert(1,a)
+
+#print(string)
+
+
+
+
+
+
+
 
 
 #r2d2.remove_node(2)

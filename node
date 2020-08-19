@@ -67,36 +67,48 @@ class LinkedList:
 n1=LinkedList(0 ,"")
 c=7
 n1.insert_beginning(c, " I was born")
-c=3
-n1.insert_beginning(c, " I started walking")
-c=1
-n1.insert_beginning(c, " I turned seven")
+d=3
+n1.insert_beginning(d, " I started walking")
+f=1
+n1.insert_beginning(f, " I turned seven")
 
+print(n1.get_data())
 
 
 
  #a=input(" enter year missing :")
  #b=input ("enter highlight: ")
  #n1.insert_beginning(int(a),b)
+# n1=LinkedList(0 ,"")
+
+a=input("enter age")
+for i in range(1,int(a)+1):
+    if(i != c and i != d and i != f ):
+        print ("year:"+str(i))
+        b=input("enter highlight:")
+        n1.insert_beginning(int(i),str(b))
+
+for i in range(1,int(a)+1):
+    
 
 
 #r2d2.remove_node(2)
 #r2d2.remove_node("R")
 
 print(n1.get_data())
-year_list = []
-current_node = n1.get_head_node()
-while current_node:
-    if current_node.get_data() != None:
-        year_list.append(current_node.get_y())
-    current_node = current_node.get_next_node()
+#year_list = []
+#current_node = n1.get_head_node()
+#while current_node:
+#    if current_node.get_data() != None:
+#        year_list.append(current_node.get_y())
+#    current_node = current_node.get_next_node()
 #return year_list
-for i in range(0,len(year_list)):
-    y=int(i)- int(i+1)
-    if y!=0:
-        a=input(" enter year missing :")
-        b=input ("enter highlight: ")
-        n1.insert_beginning(int(a),b)
+#for i in range(0,len(year_list)):
+#    y=int(i)- int(i+1)
+#    if y!=0:
+#        a=input(" enter year missing :")
+#        b=input ("enter highlight: ")
+#        n1.insert_beginning(int(a),b)
 #print(n1.get_data())
 
 

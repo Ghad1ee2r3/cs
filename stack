@@ -1,1 +1,100 @@
+import random
+#n = random.randint(0,22)
+#print(n)
+class Node:
+    def __init__(self, datacolor, num,next_node=None):
+        self.data = datacolor
+        self.num=num
+        self.next_node = next_node
+
+    def set_next_node(self, next_node):
+        self.next_node = next_node
+
+    def get_next_node(self):
+        return self.next_node
+
+    def get_data(self):
+        return str(self.data)+"  "+str(self.num)
+
+
+
+class Stack:
+     def __init__(self, limit=1000):
+        self.top_item = None
+        self.size = 0
+        self.limit = limit
+
+     def is_full(self):
+        return self.size == self.limit
+
+     def is_empty(self):
+        return self.size == 0
+     def push(self, value ,color):
+        if not self.is_full():
+            item = Node(value ,color)
+            item.set_next_node(self.top_item)
+            self.top_item = item
+            self.size += 1
+        else:
+            print("Nothing to see here, move along.")
+
+     def pop(self):
+        if not self.is_empty():
+            popped = self.top_item
+            self.top_item = popped.get_next_node()
+            self.size -= 1
+            return popped.get_data()
+        else:
+            print("WOW! Easy there buddy, it's a full house.")
+
+     def peek(self):
+        if not self.is_empty():
+	        return self.top_item.get_data()
+        else:
+            print("Nothing to see here, move along.")
+
+     def getdata(self):
+         while not self.is_empty():
+             return self.top_item.get_data()
+             pop()
+
+  
+
+
+jedi_council = Stack(20)
+
+print("------------------------")
+print("player 1: ")
+print("------------------------")
+list=["red","blue","green","yellow"] #red, blue, green, yellow
+for i in range(1,5):
+    n = random.randint(1,9)
+    c= random.randint(1,len(list)-1)
+    c=list[c]
+    jedi_council.push(c ,n)
+    #print(str(i)+""+str(jedi_council.push(c ,n)))
+    print(str(i)+"- "+jedi_council.getdata())
+
+
+print("------------------------")
+print("player 2: ")
+print("------------------------")
+
+list=["red","blue","green","yellow"] #red, blue, green, yellow
+for i in range(1,5):
+    n = random.randint(1,9)
+    c= random.randint(1,len(list)-1)
+    c=list[c]
+    jedi_council.push(c ,n)
+    print(str(i)+"- "+jedi_council.getdata())
+
+
+print("------------------------")
+
+print("First card in deck: "+jedi_council.peek())
+print("------------------------")
+
+
+
+
 

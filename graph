@@ -1,0 +1,181 @@
+class Vertex:
+    def __init__(self, data):
+        self.data = data
+        self.edges = {}
+    def add_edge(self, vertex_data, weight , price):
+        self.edges[vertex_data] = [weight ,price]
+    #def get_edge(self, vertex_data):
+    #    return "time"+self.edges[vertex_data][0]"price"+self.edges[vertex_data][1]"$"
+    def get_ed(self,vertex_data ):
+        return self.edges[vertex_data]
+    def retrieve_edges(self):
+        return list(self.edges.keys())
+class Graph:
+    def __init__(self, directed):
+            self.vertices = {}
+            self.directed = directed
+
+    def add_vertex(self, vertex):
+                  self.vertices[vertex.data] = vertex
+
+    def add_edge(self, vertex_a, vertex_b, weight, price):
+                  self.vertices[vertex_a.data].add_edge(vertex_b.data, weight ,price)
+                  if not self.directed:
+                      self.vertices[vertex_b.data].add_edge(vertex_a.data, weight ,price)
+
+    def get_edge(self,vertex_a):
+        return self.vertices[vertex_a].retrieve_edges()
+    def get_wp(self,vertex_a,vertex_b):
+        a=self.vertices[vertex_b].get_ed(vertex_a)
+        return "Time: "+str(a[0])+"Price :"+str(a[1])+" $"
+
+
+
+    def path_exists(self, vertex_a, vertex_b):
+
+               # We initialize a list of vertices to visit,
+               # and it starts with just our starting point
+               to_visit = [vertex_a]
+               # We also initialize a list to keep track of
+               # vertices we've visited
+               visited = []
+               # We continue to iterate till we visit all vertices
+               while len(to_visit) > 0:
+                   # Each  time we take and remove the first vertex in the list
+                   current = to_visit.pop(0)
+                   # and we append it to the visited vertices
+                   visited.append(current)
+                   if current == vertex_b:
+                       #print(self.vertices[vertex_b].retrieve_edges())
+
+                       # If it's the vertex we're trying to reach, return true
+
+                       return True
+                   else:
+                       # Otherwise, we'll grab the vertices that are connected
+                       # to the current vertex, and append only the ones that we
+                       # haven't visited yet to our "to_visit" list
+                       vertices = self.vertices[current].edges.keys()
+                       to_visit += [vertex for vertex in vertices if vertex not in visited]
+               # If we iterated over all the possible vertices and did not find a
+               # path, then we will return false.
+               return False
+
+
+    def path_goto(self, vertex_a):
+        a=["Kuwait","Dubai" , "Colombo","Male","Doha",  "Oslo","Tokyo"]
+        b=[]
+        for i in a:
+
+                          # We initialize a list of vertices to visit,
+                          # and it starts with just our starting point
+                          to_visit = [vertex_a]
+                          # We also initialize a list to keep track of
+                          # vertices we've visited
+                          visited = []
+                          # We continue to iterate till we visit all vertices
+                          while len(to_visit) > 0:
+                              # Each  time we take and remove the first vertex in the list
+                              current = to_visit.pop(0)
+                              # and we append it to the visited vertices
+                              visited.append(current)
+                              if current == i:
+                                  # If it's the vertex we're trying to reach, return true
+                                   b.append(i)
+                                   print(i)
+                                   return True
+                                   #return i
+                              else:
+                                  # Otherwise, we'll grab the vertices that are connected
+                                  # to the current vertex, and append only the ones that we
+                                  # haven't visited yet to our "to_visit" list
+                                  vertices = self.vertices[current].edges.keys()
+                                  to_visit += [vertex for vertex in vertices if vertex not in visited]
+                          # If we iterated over all the possible vertices and did not find a
+                          # path, then we will return false.
+                          return False
+
+                          def path_exists(self, vertex_a):
+
+                                     # We initialize a list of vertices to visit,
+                                     # and it starts with just our starting point
+                                     to_visit = [vertex_a]
+                                     # We also initialize a list to keep track of
+                                     # vertices we've visited
+                                     visited = []
+                                     # We continue to iterate till we visit all vertices
+                                     while len(to_visit) > 0:
+                                         # Each  time we take and remove the first vertex in the list
+                                         current = to_visit.pop(0)
+                                         # and we append it to the visited vertices
+                                         visited.append(current)
+                                         if current == vertex_b:
+                                             print(self.vertices[vertex_b].retrieve_edges())
+
+                                             # If it's the vertex we're trying to reach, return true
+
+                                             return True
+                                         else:
+                                             # Otherwise, we'll grab the vertices that are connected
+                                             # to the current vertex, and append only the ones that we
+                                             # haven't visited yet to our "to_visit" list
+                                             vertices = self.vertices[current].edges.keys()
+                                             to_visit += [vertex for vertex in vertices if vertex not in visited]
+                                     # If we iterated over all the possible vertices and did not find a
+                                     # path, then we will return false.
+                                     return False
+
+
+
+airplane = Graph(directed=False)
+
+#airplane.add_vertex("Dubai" )
+#airplane.add_vertex(KuwaitKuwait)
+#airplane.add_vertex(Kuwaitcolombo)
+#airplane.add_vertex(KuwaitDubai)
+#airplane.add_vertex(KuwaitDoha )
+Dubai = Vertex("Dubai")
+Colombo = Vertex("Colombo")
+Male = Vertex("Male")
+Doha = Vertex("Doha")
+Tokyo = Vertex("Tokyo")
+Oslo = Vertex("Oslo")
+kuwait = Vertex("Kuwait")
+
+airplane.add_vertex(Dubai )
+airplane.add_vertex(kuwait )
+
+airplane.add_vertex(Colombo )
+airplane.add_vertex(Male )
+airplane.add_vertex(Doha )
+airplane.add_vertex(Tokyo )
+airplane.add_vertex(Oslo )
+
+
+
+
+
+airplane.add_edge(kuwait , Dubai,2 ,120)
+airplane.add_edge(kuwait , Colombo, 4 ,200)
+airplane.add_edge(Colombo , Male, 1,60 )#, 60$)
+airplane.add_edge(Dubai , Doha,1.5 ,100)#, 100$)
+airplane.add_edge(Doha ,Tokyo, 11 ,500)# 500$)
+airplane.add_edge(Dubai , Oslo, 6 , 300 )# 300$)
+print("""city :
+Kuwait
+Dubai
+Colombo
+Male
+Doha
+Tokyo
+Oslo """)
+c= input("what is  city  traveling from? ")
+print("city can go to from "+c+":")# enter city
+print(airplane.get_edge(c))
+#
+
+cto= input("what is  city  traveling to? ")
+airplane.path_exists(c, cto)
+#print(airplane.path_exists(c, cto))
+print(airplane.get_wp(c, cto))# print cost and time
+

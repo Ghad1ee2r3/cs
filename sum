@@ -1,0 +1,16 @@
+numbers = [
+    [1, 2, 3, 4],
+    [3, 6, [5, 6], 8, 2,[2, 4], 9],
+    [4, 2, [6, 7, [2, 6, 1]]]
+]
+def sumn (list):# [1,2,3,4]
+    s=0
+    for i in list:# e1:[1,2,3,4] , e2
+        if type(i)==type([]):
+
+            s=s+sumn(i)
+        else:
+            s=s+i
+    return s
+
+print("sum is "+str(sumn(numbers)))

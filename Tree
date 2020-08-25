@@ -1,0 +1,227 @@
+class TreeNode:
+    def __init__(self, data):
+        self.data = data
+        self.children = []
+#        self.array = {"class A":[],"class B":[],"class C":[],"class D":[]}
+    def add_child(self, node):
+        a=0
+        if node.getdata()=="done":
+               print("--------------------------------------------------")
+        else:
+                a=a+1
+                if a<3:
+                    self.children.append(node)
+                    print("add child to"+self.getdata())
+                    a=a+1
+                    #print("--------------------------------------------------")
+                elif a>3:
+                    p1=1
+                    p2=1
+                    if children[1] in node and p1<=2:
+                        print("add child to"+children[1])
+                        p1=p1+1
+                        a=a+1
+                    elif children[2] in node and p2<=2:
+                        print("add child to"+children[2])
+                        p2=p2+1
+                        a=a+1
+                    elif (children[1] or children[2] )  not in node :
+                        print("parent does not exist")
+
+                    else:
+                        print("child is an orphan")
+
+
+
+    def getdata(self):
+        return self.data
+
+    #def add_name(self, node):
+    #        self.children[0].append(node)
+    #        print("added a child to family")
+    #def add_parent(self, node):
+    #    if len(self.children[1])<2:
+    #        self.children[1].append(node)
+    #def add_child(self, node):
+    #    if node=="done":
+    #        print("--------------------------------------------------")
+    #    else:
+    #        a=len(self.children[1])*2
+    #        if len(self.children[2])<=a:
+    #            self.children[2].append(node)
+    #            print("added a child to ")
+    #        else:
+    #            print("can not add c")
+
+
+    def remove_child(self, node):
+            self.children = [child for child in self.children if child is not node]
+
+    def traverse(self):
+
+            nodes = [self]
+            while len(nodes) > 0:
+                current_node = nodes.pop()
+                print(current_node.data)
+                nodes += current_node.children
+#pj=0
+#pj2=0
+#f= input("enter family name :")
+root = TreeNode("family")
+#print("added a child to "+f)
+print("--------------------------------------------------")
+
+p1=input("enter child full name (done if finished):")
+child_1 = TreeNode(p1)
+root.add_child(child_1)
+#print("added a child to "+f)
+#print("--------------------------------------------------")
+p2=input("enter child full name (done if finished):")
+child_2 = TreeNode(p2)
+root.add_child(child_2)
+#print("added a child to "+f)
+#print("--------------------------------------------------")
+#333333333333333333333333333333333333333333333333333333333333333333333333333333
+p3=input("enter child full name (done if finished):")# apple jack family
+child_3 = TreeNode(p3)
+c2=1
+c1=1
+if child_2.getdata() in p3 and c2<3:
+    child_2.add_child(child_3)
+    c2=c2+1
+elif child_2.getdata() in p3 and c2>2:
+    print("child is an orphan")
+elif child_2.getdata() in p3 and c2>2:
+    print("child is an orphan")
+
+elif child_1.getdata()in p3 and c1<3:
+    child_1.add_child(child_3)
+    c1=c1+1
+
+else:
+    print("parent not there ")
+
+
+
+#if p1  in p3 and pj<2:
+#    child_3 = TreeNode(p3)
+#    pj=pj+1
+#    print("added a child to"+p1)
+#elif p2  in p3 and pj2<2:
+#    child_3 = TreeNode(p3)
+#    print("added a child to"+p2)# jack
+#else:
+#    print("parent does not exist")
+
+#print("--------------------------------------------------")
+p4=input("enter child full name (done if finished):")#  ham jack family
+child_4 = TreeNode(p4)
+#child_2.add_child(child_4)
+
+if child_2.getdata() in p4 and c2<3:
+    child_2.add_child(child_3)
+    c2=c2+1
+elif child_2.getdata() in p4 and c2>2:
+    print("child is an orphan")
+elif child_2.getdata() in p4 and c2>2:
+    print("child is an orphan")
+
+elif child_1.getdata()in p4 and c1<3:
+    child_1.add_child(child_3)
+    c1=c1+1
+
+else:
+    print("parent not there ")
+
+p5=input("enter child full name (done if finished):")#  ham jack family
+child_5 = TreeNode(p5)
+if child_2.getdata() in p5 and c2<3:
+    child_2.add_child(child_3)
+    c2=c2+1
+elif child_2.getdata() in p5 and c2>2:
+    print("child is an orphan")
+elif child_2.getdata() in p5 and c2>2:
+    print("child is an orphan")
+
+elif child_1.getdata()in p5 and c1<3:
+    child_1.add_child(child_3)
+    c1=c1+1
+
+else:
+    print("parent not there ")
+
+
+
+
+
+
+    p6=input("enter child full name (done if finished):")#  ham jack family
+    child_6 = TreeNode(p6)
+    if child_2.getdata() in p6 and c2<3:
+        child_2.add_child(child_6)
+        c2=c2+1
+    elif child_2.getdata() in p6 and c2>2:
+        print("child is an orphan")
+    elif child_2.getdata() in p6 and c2>2:
+        print("child is an orphan")
+
+    elif child_1.getdata()in p6 and c1<3:
+        child_1.add_child(child_6)
+        c1=c1+1
+
+    else:
+        print("parent not there ")
+
+
+
+
+        p7=input("enter child full name (done if finished):")#  ham jack family
+        child_7 = TreeNode(p7)
+        if child_2.getdata() in p7 and c2<3:
+            child_2.add_child(child_7)
+            c2=c2+1
+        elif child_2.getdata() in p7 and c2>2:
+            print("child is an orphan")
+        elif child_2.getdata() in p7 and c2>2:
+            print("child is an orphan")
+
+        elif child_1.getdata()in p7 and c1<3:
+            child_1.add_child(child_7)
+            c1=c1+1
+
+        else:
+            print("parent not there ")
+
+#child_2.add_child(child_5)
+
+
+
+#if p1  in p4 and pj<2:
+#    child_3 = TreeNode(p3)
+#    pj=pj+1
+#    print("added a child to"+p1)
+#elif p2  in p4 and pj2<2:
+#    child_3 = TreeNode(p3)
+#    pj2=pj2+1
+#    print("added a child to"+p2)# jack
+#else:
+#    print("parent does not exist")
+#print("added a child to"+p1)#added a child to jack
+#print("--------------------------------------------------")
+#p4=input("enter child full name (done if finished):")# lemon jack family
+#if pj>2:
+#print("child is an orphan")
+#print("--------------------------------------------------")
+#p5=input("enter child full name (done if finished):") #sour apple jack family
+#print("added a child to"+"apple")# apple
+#print("--------------------------------------------------")
+
+#p6=input("enter child full name (done if finished):") #simple simon family
+#print("parent does not exist")
+#print("--------------------------------------------------")
+#p7=input("enter child full name (done if finished):")
+#print("--------------------------------------------------")
+#####################################################################
+
+#root.traverse()
+#child_2.traverse()

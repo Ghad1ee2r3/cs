@@ -1,0 +1,200 @@
+class HashTable:
+    def __init__(self, array_size):
+        self.array_size = array_size
+        self.array = {"class A":[],"class B":[],"class C":[],"class D":[]}
+        #None for item in range(array_size)]
+    def getdata(self):
+            return self.array
+    #def hash(self, key,value, collision_count=0):
+
+        #hash_code = sum(self.array[key].encode())
+        #return hash_code + collision_count
+
+    def compress(self, hash_code):
+        return hash_code % self.array_size
+#if value >= 90: in class A
+#90 > value >= 80: in class B
+#80 > value >= 70: in class C
+#70 > value >= 60: in class D
+#value < 60: won’t be joining any class
+    def insert(self, key, value):
+    #    collision_count = 0
+        #while True:
+        #    hash_code = self.hash(key, collision_count)
+        #    index = self.compress(hash_code)
+        #    current_array_value = self.array[index]
+            #if value >= 90: in class A
+            #90 > value >= 80: in class B
+            #80 > value >= 70: in class C
+            #70 > value >= 60: in class D
+            #value < 60: won’t be joining any class
+
+            #if (current_array_value is None) or (current_array_value[0] == key):
+                if int(value)  >= 90:
+                    name="class A"
+                    if len(self.array[name])<int(self.array_size):
+                        self.array[name].append([key, value])
+                    #break #in class A
+                elif 90 > int(value)  >= 80:
+                    #if len(array[name])<=self.array_size:
+
+                    name="class B"
+                    if len(self.array[name])<int(self.array_size):
+                        self.array[name].append([key, value])
+                    #break #in class B
+                elif 80 >int(value)  >= 70:
+                    name="class C"
+                    if len(self.array[name])<int(self.array_size):
+                        self.array[name].append([key, value])
+                    #break #in class A in class C
+                elif 70 >int(value) >= 60:
+                    name="class D"
+                    if len(self.array[name])<int(self.array_size):
+                        self.array[name].append([key, value])
+                    #break # in class D
+                elif int(value)  < 60:
+                    print("won’t be joining any class")
+                    #break
+             # self.array[index] = [key, value] #add dic
+              #self.array["class A"][0]==[key, value]
+             # break
+
+            #else:
+            #    name
+            #    collision_count += 1
+            #    self.array[name][collision_count] = [key, value]
+
+
+
+    def lookup(self, key):
+        collision_count = 0
+        return self.array[key]
+
+
+nums=input("entermaximum number of student in class: ")
+students = [
+    {
+        "name": "Jean-Luc Garza",
+        "score": 24
+    },
+    {
+        "name": "Teddy Munoz",
+        "score": 79
+    },
+    {
+        "name": "Georgia Ali",
+        "score": 17
+    },
+    {
+        "name": "Vicky Calhoun",
+        "score": 8
+    },
+    {
+        "name": "Awais Weaver",
+        "score": 65
+    },
+    {
+        "name": "Athena Kline",
+        "score": 52
+    },
+    {
+        "name": "Zacharia Whitaker",
+        "score": 38
+    },
+        {
+        "name": "Clarice Davenport",
+        "score": 99
+    },
+    {
+        "name": "Viktoria Flynn",
+        "score": 84
+    },
+    {
+        "name": "Ianis Crossley",
+        "score": 20
+    },
+    {
+        "name": "Johnnie Owens",
+        "score": 74
+    },
+    {
+        "name": "Emily-Rose Erickson",
+        "score": 33
+    },
+    {
+        "name": "Adeel Nieves",
+        "score": 100
+    },
+    {
+        "name": "Dustin Villegas",
+        "score": 98
+    },
+    {
+        "name": "Maxine Hughes",
+        "score": 65
+    },
+    {
+        "name": "Bilaal Harding",
+        "score": 79
+    },
+    {
+        "name": "Maddie Ventura",
+        "score": 71
+    },
+    {
+        "name": "Leroy Rees",
+        "score": 44
+    },
+    {
+        "name": "Wanda Frank",
+        "score": 73
+    },
+    {
+        "name": "Margaux Herbert",
+        "score": 80
+    },
+    {
+        "name": "Ali Rios",
+        "score": 70
+    },
+    {
+        "name": "Nigel Santiago",
+        "score": 25
+    },
+    {
+        "name": "Markus Greene",
+        "score": 78
+    },
+    {
+        "name": "Harlan Parrish",
+        "score": 97
+    },
+    {
+        "name": "Baran Davidson",
+        "score": 43
+    },
+    {
+        "name": "Seth Rodriguezh",
+        "score": 67
+    },
+    {
+        "name": "Diego Mayer",
+        "score": 100
+    },
+]
+
+hash_table = HashTable(nums)
+#student[0]["name"]
+#student[0]["score"]
+for i in range(0,27):
+    hash_table.insert(students[i]["name"]
+    ,students[i]["score"])
+
+#hash_table.insert("Anakin Skywalker", 30)
+#hash_table.insert("Ahsoka Tano", 80)
+
+
+print(hash_table.getdata())
+#print(hash_table.lookup("Obi-Wan Kenobi"))
+#print(hash_table.lookup("Anakin Skywalker"))
+#print(hash_table.lookup("Ahsoka Tano"))

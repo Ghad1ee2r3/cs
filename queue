@@ -1,0 +1,226 @@
+class Node:
+    def __init__(self, data, next_node=None):
+        self.data = data
+        self.next_node = next_node
+
+    def set_next_node(self, next_node):
+        self.next_node = next_node
+
+    def get_next_node(self):
+        return self.next_node
+
+    def get_data(self):
+        return self.data
+
+
+class Queue:
+    def __init__(self, limit=None):
+        self.front_node = None
+        self.back_node = None
+        self.length = 0
+        self.limit = limit
+        self.wait=0
+
+    def is_full(self):
+        return self.length == self.limit if self.limit else False
+
+    def is_empty(self):
+        return self.length == 0
+
+    def get_length(self):
+        return self.length
+
+    def get_wait(self):
+        return self.wait
+
+    def peek(self):
+        if self.is_empty():
+            print("Nothing to see here, move along.")
+        else:
+            return self.front_node.get_data()
+
+    def enqueue(self, data):
+        list =[]
+        # wait+=30
+        c=data
+        a=[]
+        b=[]
+        if len(c)>12:
+            a=c[:12]
+            d=len(a)-1
+            b=c[13:]
+            print(len(a))
+            print(len(b))
+            if not self.is_full():
+                new_node = Node(a)
+                if self.is_empty():
+                    self.front_node = new_node
+                    self.back_node = new_node
+                else:
+                    self.back_node.set_next_node(new_node)
+                    self.back_node = new_node
+                self.length += 1
+                self.wait+=30
+    #    return len(a)
+            else:
+                print("Eww go away, there's no more room!")
+#####rest of peaple
+            if not self.is_full():
+                new_node = Node(b)
+                if self.is_empty():
+                    self.front_node = new_node
+                    self.back_node = new_node
+                else:
+                    self.back_node.set_next_node(new_node)
+                    self.back_node = new_node
+                self.length += 1
+                self.wait+=30
+            else:
+                print("Eww go away, there's no more room!")
+        else:
+            print(len(data))
+
+            if not self.is_full():
+                new_node = Node(data)
+                if self.is_empty():
+                    self.front_node = new_node
+                    self.back_node = new_node
+                    #print(len(data))
+
+                else:
+                    self.back_node.set_next_node(new_node)
+                    self.back_node = new_node
+                self.length += 1
+                #self.wait+=30
+            #    print(len(data))
+
+            else:
+                print("Eww go away, there's no more room!")
+        return list.append(new_node)
+
+    def dequeue(self):
+        if not self.is_empty():
+            removed_node = self.front_node
+            if self.get_length() == 1:
+                self.front_node = None
+                self.back_node = None
+            else:
+                self.front_node = removed_node.get_next_node()
+            self.length -= 1
+            return removed_node.get_data()
+        else:
+            print("Ya basic! Nothing here nerd!")
+
+
+
+#print the waiting time for the queue
+#add 4 groups to the queue (the number of people in each group is up to you)
+#print the waiting time for the queue
+#let the people next in line go into the ride (print out the group size)
+#print the waiting time for the queue
+    def printqueue(self):
+
+        print("queue elements are:")
+        temp=self.front_node
+        while temp is not None:
+            print(temp.data,end="->")
+            temp=temp.get_next_node()
+    def getdata(self):
+        while not self.is_empty():
+            return self.front_node.get_data()
+            dequeue()
+
+print("system to enter a ride in an amusement park")
+# Creating a Queue instance
+#print ("group 2:['sara']")
+#print ("group 1:['Alia',"lama" ,"raneem" ,"","","g","h","h","","","h","","","","","gg","gg","",""]")
+#print ("group 2:["sara"]")
+#print ("group 3:["reem"]")
+#print ("group 4:["shouq"]")
+throne_room = Queue(10)
+#print the waiting time for the queue
+print("wait time :"+str(throne_room.get_wait()))#1
+
+#add 4 groups to the queue (the number of people in each group is up to you)
+a=["Alia","lama" ,"raneem" ,"","","g","h","h","","","h","","","","","gg"]#19
+#or elem in a:
+#        print (elem)
+#a=input( "enter 1group:")
+print("size of each group:")
+
+throne_room.enqueue(a)#1
+#print(len(throne_room.enqueue(a)))
+#if len(a)>12:
+#print("node: "+str(throne_room.printqueue()))
+#for i in
+#print("size of each group:")
+#if len(a)>12:
+#    a=a[:12]
+#    print(len(a))
+#    b=a[13:]
+#    print(len(b))
+    #print(a[13:])
+    #ll=len(a[13:14])
+    #print(ll)
+#else:
+#    print(len(a))
+
+
+
+
+b=["sara" ,"razan","gg","hh","g","r"]
+#print(len(b))
+throne_room.enqueue(b)#2
+c=["reem" ,"hind"]
+#print(len(c))
+throne_room.enqueue(c)#3
+d=["shouq"]
+#print(len(d))
+throne_room.enqueue(d)#4
+#print the waiting time for the queue
+wait=len(d)*30+len(a)*30+len(b)*30+len(c)*30-30
+print("wait time :"+str(wait))#1
+f=["lama"]
+throne_room.dequeue()
+
+print ("size new group add to queue")
+
+throne_room.enqueue(f)
+wait=(len(a)-12)*30+len(f)*30+len(d)*30+len(b)*30+len(c)*30-30
+print("wait time :"+str(wait))#1
+
+
+
+
+#let the people next in line go into the ride (print out the group size)
+
+#list= throne_room.enqueue(d)#
+#for i in list:
+    #print(" size node :"+str(len(i)))
+
+#print the waiting time for the queue #3
+#print("wait time :"+str(wait))#1
+
+#print("wait time :"+str(throne_room.get_wait()))#1
+#["Daenerys Targaryen"]
+#print(""+str(throne_room.enqueue(d)))
+print("node: "+str(throne_room.printqueue()))
+
+print ()
+
+
+#throne_room.enqueue("Sansa Stark")
+#throne_room.enqueue("Ygritte")
+#throne_room.enqueue("Brienne of Tarth")
+#throne_room.enqueue("Tormund GiantsBane")
+#throne_room.enqueue("Oberyn Martel")
+#throne_room.enqueue("Margaery Tyrell")
+
+# Queue Overflow
+#throne_room.enqueue("Theon Greyjoy")
+
+#throne_room.dequeue()
+
+
+# Queue Underflow
+#throne_room.dequeue()
